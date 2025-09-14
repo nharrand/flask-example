@@ -14,7 +14,7 @@ for fuzzer in $(find $SRC -name '*_fuzzer.py'); do
     # over time, we use pyinstaller to create a standalone
     # package. Though not necessarily required for reproducing issues, this is
     # required to keep fuzzers working properly.
-    pyinstaller --distpath $OUT --onefile --name $fuzzer_package $fuzzer
+    pyinstaller --distpath $OUT --onefile --name $fuzzer_package --paths $SRC --hidden-import=api_logic $fuzzer
 
     # Create execution wrapper. Atheris requires that certain libraries are
     # preloaded, so this is also done here to ensure compatibility and simplify
