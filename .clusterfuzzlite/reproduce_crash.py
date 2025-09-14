@@ -29,6 +29,7 @@ def reproduce_crash(crash_file_path):
     try:
         # Add .clusterfuzzlite to path so we can import the fuzzer
         sys.path.insert(0, '.clusterfuzzlite')
+        sys.path.insert(0, '.')
         from api_fuzzer import TestOneInput
 
         print("Running TestOneInput with crash input...")
