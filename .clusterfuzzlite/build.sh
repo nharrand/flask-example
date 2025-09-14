@@ -1,5 +1,6 @@
 # Build and install project (using current CFLAGS, CXXFLAGS). This is required
 # for projects with C extensions so that they're built with the proper flags.
+cd $SRC
 ls -l
 pip3 install --upgrade pip
 pip3 install .
