@@ -9,7 +9,6 @@ def normalize_tags(tags: Iterable) -> List[str]:
 
     out = []
     for t in tags:
-        if isinstance(t, str):
-            out.append(t.strip().lower())
+        out.append(t.strip().lower())
         # else: ignore non-strings
     return out
