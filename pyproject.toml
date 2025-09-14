@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "flask-example"
+version = "0.1.0"
+description = "Flask application with ClusterFuzzLite integration"
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "Flask==3.0.3",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-cov",
+]
+fuzz = [
+    "atheris",
+    "coverage",
+    "pyinstaller",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["*"]
+exclude = ["tests*", ".clusterfuzzlite*"]
+
+[tool.coverage.run]
+source = ["."]
+omit = [
+    "tests/*",
+    ".clusterfuzzlite/*",
+    "venv/*",
+    ".venv/*",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "if settings.DEBUG",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if __name__ == .__main__.:",
+]
