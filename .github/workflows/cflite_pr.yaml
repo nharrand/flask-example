@@ -34,3 +34,17 @@ jobs:
           sanitizer: ${{ matrix.sanitizer }}
           output-sarif: true
 
+      - name: Upload Crash Artifacts
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: clusterfuzzlite-crashes-${{ matrix.sanitizer }}
+          path: |
+            build/out/**
+            build/corpus/**
+            build/crashes/**
+            **/*crash*
+            **/*leak*
+            **/*timeout*
+          retention-days: 14
+
